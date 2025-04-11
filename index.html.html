@@ -1,315 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Basic Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Giovani's Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
 
-        header {
-            background-color: #000;
-            color: #fff;
-            padding: 15px 0;
-            text-align: center;
-        }
+    header {
+      background-color: #1e1e2f;
+      color: #fff;
+      padding: 25px 0;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
 
-        nav {
-            background-color: #444;
-            padding: 10px;
-        }
+    nav {
+      background-color: #2e2e42;
+      padding: 10px 0;
+      text-align: center;
+    }
 
-        nav a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    nav a {
+      color: #fff;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
 
-        main {
-            padding: 20px;
-        }
+    nav a:hover {
+      color: #00bfa6;
+    }
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+    main {
+      padding: 30px 15px;
+    }
 
-        .hidden {
-            display: none;
-        }
+    section {
+      display: none;
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      margin-bottom: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      animation: fadeIn 0.8s ease-in-out;
+    }
 
-        section {
-            padding: 20px;
-        }
+    section.active {
+      display: block;
+    }
 
-        /* Services section specific styling */
-        .services-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-in-out;
-        }
+    h2 {
+      text-align: center;
+      color: #1e1e2f;
+      margin-bottom: 20px;
+    }
 
-        .services-header {
-            font-size: 2em;
-            color: #333;
-            text-align: center;
-            margin-bottom: 20px;
-            animation: slideIn 1s ease-out;
-        }
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
 
-        .services-description {
-            font-size: 1.2em;
-            line-height: 1.8;
-            color: #333;
-            margin-bottom: 20px;
-            animation: fadeIn 1.5s ease-in-out;
-        }
+    .button-container button {
+      padding: 12px 25px;
+      background-color: #00bfa6;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      margin: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-        .service-item {
-            font-size: 1.2em;
-            margin-bottom: 15px;
-            color: #333;
-            animation: fadeIn 2s ease-in-out;
-        }
+    .button-container button:hover {
+      background-color: #009f8a;
+    }
 
-        .service-item span {
-            font-weight: bold;
-        }
+    footer {
+      background-color: #1e1e2f;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
 
-        /* About, Contact, Home section styles */
-        .about-container, .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-in-out;
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        .about-header, .contact-header, .services-header {
-            font-size: 2em;
-            color: #333;
-            text-align: center;
-            margin-bottom: 20px;
-            animation: slideIn 1s ease-out;
-        }
+    p {
+      line-height: 1.6;
+    }
 
-        .professional-summary {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            color: #444;
-            text-align: center;
-            font-style: italic;
-            animation: fadeIn 1.5s ease-in-out;
-        }
+    .service-item {
+      margin-bottom: 20px;
+    }
 
-        /* Buttons styling */
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
+    .service-item span {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+      color: #00bfa6;
+    }
 
-        .button-container button {
-            padding: 10px 20px;
-            background-color: grey;
-            border: none;
-            color: white;
-            font-size: 1.2em;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .button-container button:hover {
-            background-color: #555;
-        }
-
-        /* Animation for motion graphics */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            0% {
-                transform: translateX(-50%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-    </style>
+    a {
+      color: #00bfa6;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Welcome to Giovani's Website</h1>
-    </header>
+<header>
+  <h1>Welcome to Giovani's Website</h1>
+</header>
 
-    <nav>
-        <a onclick="showSection('home')">Home</a>
-        <a onclick="showSection('about')">About</a>
-        <a onclick="showSection('services')">Services</a>
-        <a onclick="showSection('contact')">Contact</a>
-    </nav>
+<nav>
+  <a onclick="showSection('home')">Home</a>
+  <a onclick="showSection('about')">About</a>
+  <a onclick="showSection('services')">Services</a>
+  <a onclick="showSection('contact')">Contact</a>
+</nav>
 
-    <main>
-        <!-- Home Section -->
-        <section id="home">
-            <h2>Home</h2>
-            <p>Hello, welcome to my webpage. I'm so glad you made it! Below are some sections where you can learn more about me, my services, and how to contact me.</p>
-            
-            <div class="button-container">
-                <button onclick="showSection('about')">About Me</button>
-                <button onclick="showSection('services')">My Services</button>
-                <button onclick="showSection('contact')">Contact Me</button>
-            </div>
-        </section>
+<main>
+  <section id="home" class="active">
+    <h2>Home</h2>
+    <p>Hello, welcome to my webpage. I'm so glad you made it! Below are some sections where you can learn more about me, my services, and how to contact me.</p>
+    <div class="button-container">
+      <button onclick="showSection('about')">About Me</button>
+      <button onclick="showSection('services')">My Services</button>
+      <button onclick="showSection('contact')">Contact Me</button>
+    </div>
+  </section>
 
-        <!-- About Section -->
-        <section id="about" class="hidden">
-            <div class="about-container">
-                <div class="about-summary">
-                    <p>Hello, my name is <strong>Giovani</strong>. I am an IT professional with a passion for technology and a commitment to delivering innovative solutions. Below is a little more about my journey in IT.</p>
-                </div>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>My name is <strong>Giovani</strong>, and I am an IT professional with a passion for diagnosing and resolving computer issues. I became fascinated with technology during a time in Cuba without internet access, which pushed me to understand computers deeply—from hardware to networks. That journey turned into a career I'm deeply passionate about.</p>
+  </section>
 
-                <div class="about-header">
-                    <h2>About Me</h2>
-                </div>
+  <section id="services">
+    <h2>Services</h2>
+    <div class="service-item"><span>Network Setup & Configuration</span> LAN/WAN, Wi-Fi, and VPN setup for homes and businesses.</div>
+    <div class="service-item"><span>Computer Hardware Services</span> Custom PC builds, diagnostics, repairs, and upgrades.</div>
+    <div class="service-item"><span>Software Solutions</span> OS installs, app optimization, and troubleshooting.</div>
+    <div class="service-item"><span>Virus & Malware Protection</span> Scanning, removal, and future-proofing security tools.</div>
+    <div class="service-item"><span>Driver Updates</span> Full driver installs, updates, and compatibility checks.</div>
+    <div class="service-item"><span>Computer Repair</span> Complete diagnostics for speed issues or crashes.</div>
+    <div class="service-item"><span>Data Backup & Recovery</span> Peace-of-mind solutions for data protection and retrieval.</div>
+    <div class="service-item"><span>IT Consulting</span> Strategic tech guidance for business infrastructure.</div>
+    <div class="service-item"><span>Remote Support</span> Real-time help via phone or video call.</div>
+  </section>
 
-                <div class="about-text">
-                    <p>My name is <strong>Giovani</strong>, and I am an IT professional with a deep passion for diagnosing and resolving computer issues. From a young age, I have always been surrounded by technology, sparking my fascination with the inner workings of computers. A pivotal moment in my journey was when I found myself in Cuba without access to the internet. This challenge led me to learn about storage devices, networks, and how computer hardware comes together to form a cohesive system.</p>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p><strong>Name:</strong> Giovani</p>
+    <p><strong>Phone:</strong> <a href="tel:+16502484302">650-248-4302</a></p>
+    <p><strong>Email:</strong> <a href="mailto:firewolf3r@gmail.com">firewolf3r@gmail.com</a></p>
+    <p>If you're interested in working together or have questions, feel free to reach out!</p>
+  </section>
+</main>
 
-                    <p>This experience ignited a fire within me to pursue IT as a career, as I discovered the incredible impact technology has on problem-solving and improving lives. Today, I am driven to expand my expertise and make IT not just a job but a lifelong passion.</p>
-                </div>
-            </div>
-        </section>
+<footer>
+  <p>&copy; 2025 Giovani. All rights reserved.</p>
+</footer>
 
-        <!-- Services Section -->
-        <section id="services" class="hidden">
-            <div class="services-container">
-                <div class="services-header">
-                    <h2>Services</h2>
-                </div>
-
-                <div class="services-description">
-                    <p>I offer a wide range of professional services designed to meet all of your IT needs. With years of hands-on experience, I provide tailored solutions that are both effective and efficient, ensuring your technology works at its best. Explore my offerings below:</p>
-                </div>
-
-                <div class="service-item">
-                    <span>Network Setup & Configuration:</span> Whether you’re looking to establish a secure home network or a robust business infrastructure, I specialize in LAN/WAN setup, Wi-Fi installation, and VPN configuration. I’ll ensure that your network is secure, fast, and reliable, minimizing downtime and maximizing performance.
-                </div>
-
-                <div class="service-item">
-                    <span>Computer Hardware Services:</span> From custom PC builds to upgrading your current system, I handle all aspects of computer hardware. My services include hardware diagnostics, troubleshooting, replacement, and preventative maintenance, ensuring your devices are running smoothly for years to come.
-                </div>
-
-                <div class="service-item">
-                    <span>Software Solutions:</span> Operating system installations, software troubleshooting, and optimization are part of my comprehensive software services. I’ll ensure your system is running efficiently, install necessary programs, and resolve any software-related issues that may arise, giving you a seamless experience.
-                </div>
-
-                <div class="service-item">
-                    <span>Virus Removal & Malware Protection:</span> Protect your devices from security threats with my virus and malware removal services. I offer thorough scanning and removal of malicious software, followed by the installation of top-tier antivirus solutions to guard against future threats and ensure ongoing security.
-                </div>
-
-                <div class="service-item">
-                    <span>Driver Installation & Updates:</span> Outdated or missing drivers can cause serious issues. I provide driver installation and updates for all of your devices, ensuring that everything works as intended. I resolve driver conflicts and ensure compatibility across all hardware components.
-                </div>
-
-                <div class="service-item">
-                    <span>Computer Diagnostics & Repair:</span> Is your computer running slow or experiencing issues? My diagnostic service identifies and resolves hardware and software problems, restoring your system to optimal performance. From slow startups to system crashes, I’ve got you covered.
-                </div>
-
-                <div class="service-item">
-                    <span>Data Backup & Recovery:</span> Safeguard your critical data with my data backup solutions. If disaster strikes, my data recovery services will help retrieve lost or damaged files, ensuring that your important documents are never lost.
-                </div>
-
-                <div class="service-item">
-                    <span>IT Consulting & Support:</span> My IT consulting services offer expert advice on infrastructure, security, and cloud solutions. I help businesses set up efficient and scalable IT systems, ensuring smooth operations and long-term growth.
-                </div>
-
-                <div class="service-item">
-                    <span>Hardware Asset Organization:</span> For businesses, I offer hardware asset management services, including inventory tracking, audits, and detailed documentation. I’ll help you stay organized and ensure that your hardware is properly maintained and efficiently managed.
-                </div>
-
-                <div class="service-item">
-                    <span>Tech Support & Remote Assistance:</span> Need help fast? My remote support services allow me to troubleshoot and resolve issues from anywhere, providing timely assistance for all your IT needs. I also offer phone and video support sessions for personalized help.
-                </div>
-
-                <div class="services-description">
-                    <p>By offering these comprehensive services, I aim to ensure that all your technology needs are met with professionalism and precision. Let me take care of your IT, so you can focus on what matters most.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="hidden">
-            <div class="contact-container">
-                <div class="professional-summary">
-                    <p>Hello, my name is <strong>Giovani</strong>. I am an IT Professional with a passion for technology and a commitment to delivering innovative solutions. I specialize in systems administration, cloud computing, networking, and troubleshooting. I have worked on various IT projects and am always looking for opportunities to grow and contribute to new challenges. Below is my contact information.</p>
-                </div>
-
-                <div class="contact-header">
-                    <h2>Contact Information</h2>
-                </div>
-
-                <div class="contact-card">
-                    <p><span>Full Name:</span> Giovani</p>
-                    <p><span>Phone Number:</span> <a href="tel:+16502484302">650-248-4302</a></p>
-                    <p><span>Email Address:</span> <a href="mailto:firewolf3r@gmail.com">firewolf3r@gmail.com</a></p>
-                </div>
-
-                <div class="contact-card">
-                    <h3>Let's Connect!</h3>
-                    <p>If you have any questions, or if you're interested in working together, feel free to reach out to me through the contact information above. I look forward to hearing from you!</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // Function to show the selected section and hide the others
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.classList.add('hidden');
-            });
-
-            // Show the selected section
-            const selectedSection = document.getElementById(sectionId);
-            selectedSection.classList.remove('hidden');
-        }
-
-        // By default, show the home section
-        window.onload = () => showSection('home');
-    </script>
+<script>
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
 
 </body>
 </html>
