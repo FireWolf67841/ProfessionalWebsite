@@ -11,6 +11,7 @@
       font-family: 'Poppins', sans-serif;
       background-color: #f8f9fa;
       color: #333;
+      overflow-x: hidden;
     }
 
     header {
@@ -33,6 +34,7 @@
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s;
+      cursor: pointer;
     }
 
     nav a:hover {
@@ -117,6 +119,26 @@
     a {
       color: #00bfa6;
     }
+
+    /* Custom Cursor: Dot + Shark Emoji */
+    #cursor-dot, #cursor-shark {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+    }
+
+    #cursor-dot {
+      width: 8px;
+      height: 8px;
+      background-color: black;
+      border-radius: 50%;
+    }
+
+    #cursor-shark {
+      font-size: 24px;
+    }
   </style>
 </head>
 <body>
@@ -133,19 +155,18 @@
 </nav>
 
 <main>
- <section id="home" class="active">
-  <h2>Home</h2>
-  <p>Hello, welcome to my webpage. I'm so glad you made it! Below are some sections where you can learn more about me, my services, and how to contact me.</p>
-  <div class="button-container">
-    <button onclick="showSection('about')">About Me</button>
-    <button onclick="showSection('services')">My Services</button>
-    <button onclick="showSection('contact')">Contact Me</button>
-    <a href="https://www.linkedin.com/in/giovani-stinson-a12a32258/" target="_blank">
-      <button>My LinkedIn Page</button>
-    </a>
-  </div>
-</section>
-
+  <section id="home" class="active">
+    <h2>Home</h2>
+    <p>Hello, welcome to my webpage. I'm so glad you made it! Below are some sections where you can learn more about me, my services, and how to contact me.</p>
+    <div class="button-container">
+      <button onclick="showSection('about')">About Me</button>
+      <button onclick="showSection('services')">My Services</button>
+      <button onclick="showSection('contact')">Contact Me</button>
+      <a href="https://www.linkedin.com/in/giovani-stinson-a12a32258/" target="_blank">
+        <button>My LinkedIn Page</button>
+      </a>
+    </div>
+  </section>
 
   <section id="about">
     <h2>About Me</h2>
@@ -179,11 +200,41 @@
   <p>&copy; 2025 Giovani. All rights reserved.</p>
 </footer>
 
+<!-- Cursor Elements -->
+<div id="cursor-dot"></div>
+<div id="cursor-shark">🦈</div>
+
 <script>
   function showSection(id) {
     document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
+
+  const dot = document.getElementById('cursor-dot');
+  const shark = document.getElementById('cursor-shark');
+
+  let mouseX = 0, mouseY = 0;
+  let dotX = 0, dotY = 0;
+  let sharkX = 0, sharkY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animateCursor() {
+    dotX += (mouseX - dotX) * 0.25;
+    dotY += (mouseY - dotY) * 0.25;
+    sharkX += (mouseX - sharkX) * 0.1;
+    sharkY += (mouseY - sharkY) * 0.1;
+
+    dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
+    shark.style.transform = `translate3d(${sharkX}px, ${sharkY}px, 0)`;
+
+    requestAnimationFrame(animateCursor);
+  }
+
+  animateCursor();
 </script>
 
 </body>
